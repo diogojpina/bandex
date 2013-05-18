@@ -1,0 +1,124 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  Internal Error (javaClasses.cpp:129), pid=6100, tid=1888
+#  fatal error: Invalid layout of preloaded class
+#
+# JRE version: 7.0_21-b11
+# Java VM: Java HotSpot(TM) Client VM (23.21-b01 mixed mode windows-x86 )
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.sun.com/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x003c8800):  JavaThread "Unknown thread" [_thread_in_vm, id=1888, stack(0x00900000,0x00950000)]
+
+Stack: [0x00900000,0x00950000],  sp=0x0094fb2c,  free space=318k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x170511]
+V  [jvm.dll+0x16a6b6]
+V  [jvm.dll+0x2082f]
+V  [jvm.dll+0x208b6]
+V  [jvm.dll+0x2e5dd]
+V  [jvm.dll+0x2e889]
+V  [jvm.dll+0x77bd1]
+V  [jvm.dll+0x77f8b]
+V  [jvm.dll+0x12a1b1]
+V  [jvm.dll+0x14ac6a]
+V  [jvm.dll+0xa9eef]
+C  [javaw.exe+0x13ca]
+C  [javaw.exe+0x1e3c]
+C  [javaw.exe+0xa5b1]
+C  [javaw.exe+0xa63b]
+C  [kernel32.dll+0xb713]  GetModuleFileNameA+0x1b4
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x003c8800 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=1888, stack(0x00900000,0x00950000)]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (10 events):
+Event: 0.012 loading class 0x003cf980 done
+Event: 0.012 loading class 0x003cf2c0 done
+Event: 0.012 loading class 0x003cf298
+Event: 0.012 loading class 0x02a65518
+Event: 0.012 loading class 0x02a65518 done
+Event: 0.012 loading class 0x02a65550
+Event: 0.012 loading class 0x02a65550 done
+Event: 0.012 loading class 0x02a65588
+Event: 0.012 loading class 0x02a65588 done
+Event: 0.012 loading class 0x003cf298 done
+
+
+Dynamic libraries:
+0x00400000 - 0x0042f000 	C:\Arquivos de programas\Java\jre7\bin\javaw.exe
+0x7c900000 - 0x7c9b3000 	C:\WINDOWS\system32\ntdll.dll
+0x7c800000 - 0x7c900000 	C:\WINDOWS\system32\kernel32.dll
+0x77f50000 - 0x77ffb000 	C:\WINDOWS\system32\ADVAPI32.dll
+0x77db0000 - 0x77e42000 	C:\WINDOWS\system32\RPCRT4.dll
+0x77f20000 - 0x77f31000 	C:\WINDOWS\system32\Secur32.dll
+0x7e360000 - 0x7e3f1000 	C:\WINDOWS\system32\USER32.dll
+0x77e50000 - 0x77e99000 	C:\WINDOWS\system32\GDI32.dll
+0x773b0000 - 0x774b3000 	C:\WINDOWS\WinSxS\x86_Microsoft.Windows.Common-Controls_6595b64144ccf1df_6.0.2600.5512_x-ww_35d4ce83\COMCTL32.dll
+0x77bf0000 - 0x77c48000 	C:\WINDOWS\system32\msvcrt.dll
+0x77ea0000 - 0x77f16000 	C:\WINDOWS\system32\SHLWAPI.dll
+0x76360000 - 0x7637d000 	C:\WINDOWS\system32\IMM32.DLL
+0x78aa0000 - 0x78b5e000 	C:\Arquivos de programas\Java\jre7\bin\msvcr100.dll
+0x6e7c0000 - 0x6eb0f000 	C:\Arquivos de programas\Java\jre7\bin\client\jvm.dll
+0x71a90000 - 0x71a9a000 	C:\WINDOWS\system32\WSOCK32.dll
+0x71a70000 - 0x71a87000 	C:\WINDOWS\system32\WS2_32.dll
+0x71a60000 - 0x71a68000 	C:\WINDOWS\system32\WS2HELP.dll
+0x76b20000 - 0x76b4e000 	C:\WINDOWS\system32\WINMM.dll
+0x76bd0000 - 0x76bdb000 	C:\WINDOWS\system32\PSAPI.DLL
+0x6e710000 - 0x6e71c000 	C:\Arquivos de programas\Java\jre7\bin\verify.dll
+0x6d4d0000 - 0x6d4f0000 	C:\Arquivos de programas\Java\jre7\bin\java.dll
+0x6e7a0000 - 0x6e7b3000 	C:\Arquivos de programas\Java\jre7\bin\zip.dll
+0x59ea0000 - 0x59f41000 	C:\WINDOWS\system32\dbghelp.dll
+0x77be0000 - 0x77be8000 	C:\WINDOWS\system32\VERSION.dll
+
+VM Arguments:
+jvm_args: -Dfile.encoding=Cp1252 -Xbootclasspath:D:\adt-bundle-windows-x86-20130219\sdk\platforms\android-17\android.jar 
+java_command: br.usp.ime.bandex.XmlFileReader
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=C:/Arquivos de programas/Java/jre7/bin/client;C:/Arquivos de programas/Java/jre7/bin;C:/Arquivos de programas/Java/jre7/lib/i386;C:\Arquivos de programas\PHP\;C:\Arquivos de programas\Windows Resource Kits\Tools\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Arquivos de programas\ATI Technologies\ATI.ACE\Core-Static;C:\VXIPNP\WinNT\Bin;C:\Documents and Settings\Diogo\Desktop\phonegap\adt-bundle-windows-x86-20130219\sdk\platform-tools;C:\Documents and Settings\Diogo\Desktop\phonegap\adt-bundle-windows-x86-20130219\sdk\tools;C:\Arquivos de programas\Java\jre7\bin;C:\Arquivos de programas\apache-ant-1.9.0\bin;C:\Arquivos de programas\nodejs\;C:\Documents and Settings\Diogo\Dados de aplicativos\npm\;D:\adt-bundle-windows-x86-20130219\eclipse;
+USERNAME=Diogo
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=x86 Family 6 Model 15 Stepping 13, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows XP Build 2600 Service Pack 3
+
+CPU:total 2 (2 cores per cpu, 1 threads per core) family 6 model 15 stepping 13, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, tsc
+
+Memory: 4k page, physical 2096428k(229796k free), swap 4034460k(1562272k free)
+
+vm_info: Java HotSpot(TM) Client VM (23.21-b01) for windows-x86 JRE (1.7.0_21-b11), built on Apr  4 2013 04:43:10 by "java_re" with unknown MS VC++:1600
+
+time: Fri May 10 12:38:33 2013
+elapsed time: 0 seconds
+
