@@ -4,5 +4,16 @@
     <string name="app_name">Bandex</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title">Cardápio do Bandex</string>
+    <string name="prompt">Escolha um Restaurante</string>
+    <string name="back">Voltar</string>
+    <string name="next">Avançar</string>
+    
+	<string-array name="restaurantes">
+        <item>Restaurante Central</item>
+        <item>Restaurante da Física</item>
+        <item>Restaurante das Químicas</item>
+        <item>Restaurante da PUSP-C</item>
+    </string-array>    
 
 </resources>

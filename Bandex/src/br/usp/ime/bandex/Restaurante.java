@@ -1,11 +1,18 @@
 package br.usp.ime.bandex;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Restaurante {
 	private int id;
 	private String name;
 	private String address;
 	private String tel;
-	private Menu[] menu;
+	private List<Menu> menus;
+	
+	public Restaurante() {
+		this.menus = new ArrayList<Menu>();
+	}
 	
 	
 	public int getId() {
@@ -40,11 +47,8 @@ public class Restaurante {
 		this.tel = tel;
 	}
 
-	public Menu[] getMenu() {
-		return menu;
-	}
 
-	public void setMenu(Menu[] menu) {
-		this.menu = menu;
+	public void addMenu(Menu menu) {
+		this.menus.add(menu);		
 	}	
 }
