@@ -54,6 +54,13 @@ public class Menu {
 	public int getPeriodo() {
 		return periodo;
 	}
+	
+	public String getPeriodoName() {
+		if (this.periodo == 1)
+			return "Almoço";
+		else
+			return "Jantar";
+	}
 
 	public void setPeriodo(int periodo) {
 		this.periodo = periodo;

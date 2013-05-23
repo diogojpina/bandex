@@ -51,4 +51,8 @@ public class Restaurante {
 	public void addMenu(Menu menu) {
 		this.menus.add(menu);		
 	}	
+	
+	public List<Menu> getMenuList() {
+		return this.menus;
+	}
 }

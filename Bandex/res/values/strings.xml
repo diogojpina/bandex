@@ -8,12 +8,16 @@
     <string name="prompt">Escolha um Restaurante</string>
     <string name="back">Voltar</string>
     <string name="next">Avançar</string>
-    
-	<string-array name="restaurantes">
+    <string name="info">Informaçõs</string>
+    <string name="comment">Comentários</string>
+
+    <string-array name="restaurantes">
         <item>Restaurante Central</item>
         <item>Restaurante da Física</item>
         <item>Restaurante das Químicas</item>
         <item>Restaurante da PUSP-C</item>
-    </string-array>    
+    </string-array>
+
+    <string name="title_activity_restaurante">RestauranteActivity</string>
 
 </resources>

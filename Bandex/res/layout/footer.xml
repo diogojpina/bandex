@@ -15,12 +15,12 @@
         android:layout_weight="1" >
         
         <Button
-            android:id="@+id/back"
+            android:id="@+id/info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dip"
-            android:text="@string/back"
-            android:enabled="false" />
+            android:text="@string/info"
+            android:enabled="true" />
         
     </LinearLayout>
     
@@ -30,12 +30,12 @@
         android:layout_weight="1" >
         
         <Button
-            android:id="@+id/next"
+            android:id="@+id/comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dip"
-            android:text="@string/next"
-            android:enabled="false" />
+            android:text="@string/comment"
+            android:enabled="true" />
         
     </LinearLayout>
     
