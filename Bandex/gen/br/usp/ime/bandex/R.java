@@ -29,36 +29,54 @@ public final class R {
         public static final int ic_launcher=0x7f020002;
     }
     public static final class id {
-        public static final int action_settings=0x7f09000e;
-        public static final int btnRefresh=0x7f090009;
-        public static final int comment=0x7f090005;
-        public static final int day=0x7f09000b;
-        public static final int description=0x7f09000d;
-        public static final int extra=0x7f09000c;
-        public static final int footer=0x7f090001;
+        public static final int action_settings=0x7f090019;
+        public static final int address=0x7f090008;
+        public static final int bInfo=0x7f09001a;
+        public static final int btnComentario=0x7f090018;
+        public static final int btnEnviar=0x7f090003;
+        public static final int btnRefresh=0x7f090010;
+        public static final int comentario=0x7f090004;
+        public static final int comentario_id=0x7f090015;
+        public static final int comment=0x7f09000c;
+        public static final int commenter=0x7f090017;
+        public static final int day=0x7f090012;
+        public static final int description=0x7f090014;
+        public static final int extra=0x7f090013;
         public static final int header=0x7f090000;
-        public static final int imageIME=0x7f090007;
-        public static final int info=0x7f090004;
-        public static final int layoutFooter=0x7f090003;
-        public static final int layoutHeader=0x7f090006;
-        public static final int logo=0x7f090008;
-        public static final int menu_id=0x7f09000a;
-        public static final int spinner=0x7f090002;
+        public static final int imageIME=0x7f09000e;
+        public static final int info=0x7f09000b;
+        public static final int layoutFooter=0x7f09000a;
+        public static final int layoutHeader=0x7f09000d;
+        public static final int logo=0x7f09000f;
+        public static final int menu_id=0x7f090011;
+        public static final int message=0x7f090016;
+        public static final int name=0x7f090007;
+        public static final int spinner=0x7f090006;
+        public static final int tel=0x7f090009;
+        public static final int textView1=0x7f090001;
+        public static final int textView2=0x7f090005;
+        public static final int username=0x7f090002;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int activity_restaurante=0x7f030001;
-        public static final int footer=0x7f030002;
-        public static final int header=0x7f030003;
-        public static final int header_gradient=0x7f030004;
-        public static final int list_row=0x7f030005;
+        public static final int activity_comentario=0x7f030000;
+        public static final int activity_comentario_send=0x7f030001;
+        public static final int activity_main=0x7f030002;
+        public static final int activity_restaurante=0x7f030003;
+        public static final int footer=0x7f030004;
+        public static final int header=0x7f030005;
+        public static final int header_gradient=0x7f030006;
+        public static final int list_row=0x7f030007;
+        public static final int row_comentario=0x7f030008;
     }
     public static final class menu {
-        public static final int main=0x7f080000;
-        public static final int restaurante=0x7f080001;
+        public static final int comentario=0x7f080000;
+        public static final int comentario_send=0x7f080001;
+        public static final int main=0x7f080002;
+        public static final int restaurante=0x7f080003;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
+        public static final int add_comentario=0x7f050009;
         public static final int app_name=0x7f050000;
         public static final int back=0x7f050005;
         public static final int comment=0x7f050008;
@@ -67,7 +85,9 @@ public final class R {
         public static final int next=0x7f050006;
         public static final int prompt=0x7f050004;
         public static final int title=0x7f050003;
-        public static final int title_activity_restaurante=0x7f050009;
+        public static final int title_activity_comentario=0x7f05000b;
+        public static final int title_activity_comentario_send=0x7f05000c;
+        public static final int title_activity_restaurante=0x7f05000a;
     }
     public static final class style {
         /** 

@@ -14,6 +14,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -23,6 +24,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -35,8 +37,7 @@ public class MainActivity extends ListActivity {
 	private Restaurante[] restaurantes = new Restaurante[4];
 	private int restauranteId = 0;
 	
-	private Button bInfo;
-    private Button bComment;
+
 	private Spinner spinner;
 	private ImageButton btnRefresh;
 	
@@ -48,13 +49,8 @@ public class MainActivity extends ListActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-
+		refreshRestaurante();
 		
-		new UpdateRestauranteItems().execute();
-		
-		
-		this.bInfo = (Button) findViewById(R.id.info);
-		this.bComment = (Button) findViewById(R.id.comment);
 		this.spinner = (Spinner) findViewById(R.id.spinner);
 		this.btnRefresh = (ImageButton) findViewById(R.id.btnRefresh);
 		
@@ -62,40 +58,23 @@ public class MainActivity extends ListActivity {
         lv.setOnItemClickListener(new OnItemClickListener() {
         	  
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Intent in = new Intent(getApplicationContext(), DisplayRssFeedActivity.class);
+                Intent in = new Intent(getApplicationContext(), ComentarioActivity.class);
                  
-                //String sid = ((TextView) view.findViewById(R.id.rss_id)).getText().toString();
-                //showToast("Carregando o id: " + sid);
-                //in.putExtra("rss_id", sid);
-                //startActivity(in);
+                String sid = ((TextView) view.findViewById(R.id.menu_id)).getText().toString();
+                showToast("Comentários sobre a refeição.");
+                in.putExtra("menuId", sid);
+                startActivity(in);
             }
         });		
         
         
-        bInfo.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent in = new Intent(getApplicationContext(), RestauranteActivity.class);
-				
-				showToast("Informações sobre o restaurante.");
-				startActivity(in);
-			}
-		});
-        
-        bComment.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				System.out.println("Mais comentários.");
-			}
-		});
-		
-		
         spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
 				int pos, long id) {
-				if (restaurantes[pos] != null)
-					System.out.println(restaurantes[pos].getName());
+				restauranteId = pos;
+				new LoadRestauranteFromDB().execute();
+					
 			}
 			@Override
 			public void onNothingSelected(AdapterView<?> arg0) {
@@ -117,6 +96,22 @@ public class MainActivity extends ListActivity {
 		return true;
 	}
 	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	        case R.id.bInfo:
+	        	Restaurante res = restaurantes[restauranteId];
+	        	String info = 	res.getName() + "\n\n" +
+	        					res.getAddress() + "\n\n" +
+	        					res.getTel();
+	        					
+	        	showToast(info);
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}	
+	
 	private void refreshRestaurante() {
 		switch (isNetworkAvailable()) {
 			case MOBILE:
@@ -134,7 +129,7 @@ public class MainActivity extends ListActivity {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						dialog.cancel();
-						//new LoadRSSFeedFromDB().execute();
+						new LoadRestauranteFromDB().execute();
 					}
 				});		
 				
@@ -147,7 +142,6 @@ public class MainActivity extends ListActivity {
 				break;
 			case 0:
 				showToast("Sem conexão com a internet. Carregando as informações salvas.");
-				//new LoadRSSFeedFromDB().execute();
 				new LoadRestauranteFromDB().execute();
 				break;				
 		}
@@ -199,12 +193,9 @@ public class MainActivity extends ListActivity {
 			
 						
 			restauranteDB.addRestaurante(restaurantes[0]);
-			//restauranteDB.addRestaurante(restaurantes[1]);
-			//restauranteDB.addRestaurante(restaurantes[2]);
-			//restauranteDB.addRestaurante(restaurantes[3]);
-			
-			
-			
+			restauranteDB.addRestaurante(restaurantes[1]);
+			restauranteDB.addRestaurante(restaurantes[2]);
+			restauranteDB.addRestaurante(restaurantes[3]);
 			
 	    	return null;
 	    }
@@ -232,20 +223,19 @@ public class MainActivity extends ListActivity {
         @Override
         protected String doInBackground(String... args) {
         	RestauranteDatabaseHandler restauranteDB = new RestauranteDatabaseHandler(getApplicationContext());
+
+        	Restaurante res = restauranteDB.getRestaurante(restauranteId+1);  
         	
-        	
-        	/*
-        	Restaurante res = restauranteDB.getRestaurante(1);        	
         	System.out.println(res.getName());
-        	*/
         	
         	menuItemList.clear();        			
-        	for (int i=0; i < restaurantes[0].getMenuList().size(); i++) {
-        		br.usp.ime.bandex.Menu menu = restaurantes[0].getMenuList().get(i);
+        	for (int i=0; i < res.getMenuList().size(); i++) {
+        		br.usp.ime.bandex.Menu menu = res.getMenuList().get(i);
         		
         		HashMap<String, String> map = new HashMap<String, String>();
         		map.put("id", Integer.toString(menu.getId()));
-        		map.put("day", menu.getDay().toString());
+        		//map.put("day", menu.getDay().toString());
+        		map.put("day", "12 12 1234");
         		map.put("extra", menu.getPeriodoName() + ": " + menu.getKcal() + "Kcal");
         		map.put("options", menu.getOptions());
         		

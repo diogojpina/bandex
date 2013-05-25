@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/btnComentario"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="@string/add_comentario"/>
+
+</menu>

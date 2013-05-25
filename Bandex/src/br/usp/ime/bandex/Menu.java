@@ -56,7 +56,7 @@ public class Menu {
 	}
 	
 	public String getPeriodoName() {
-		if (this.periodo == 1)
+		if (this.periodo == 2)
 			return "Almoço";
 		else
 			return "Jantar";
@@ -73,7 +73,6 @@ public class Menu {
 	public void setOptions(String options) {
 		this.options = options;
 	}
-	
 	
 	
 }

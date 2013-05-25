@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dip" >
+     
+    <TextView 
+        android:id="@+id/comentario_id"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+  
+    <!-- Article title -->
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="1dip"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textColor="#303030" />
+     
+    <!-- published date -->
+    <TextView
+        android:id="@+id/commenter"
+        android:layout_below="@id/message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="3dip"
+        android:textSize="14dp"
+        android:textColor="#b70400"/>
+
+
+    
+</RelativeLayout>

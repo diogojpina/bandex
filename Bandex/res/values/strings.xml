@@ -10,6 +10,7 @@
     <string name="next">Avançar</string>
     <string name="info">Informaçõs</string>
     <string name="comment">Comentários</string>
+    <string name="add_comentario">Adicionar Comentário</string>
 
     <string-array name="restaurantes">
         <item>Restaurante Central</item>
@@ -18,6 +19,8 @@
         <item>Restaurante da PUSP-C</item>
     </string-array>
 
-    <string name="title_activity_restaurante">RestauranteActivity</string>
+    <string name="title_activity_restaurante">Bandex - Restaurante</string>
+    <string name="title_activity_comentario">Bandex - Comentários</string>
+    <string name="title_activity_comentario_send">ComentarioSendActivity</string>
 
 </resources>

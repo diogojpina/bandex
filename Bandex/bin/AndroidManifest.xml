@@ -29,6 +29,14 @@
             android:name="br.usp.ime.bandex.RestauranteActivity"
             android:label="@string/title_activity_restaurante" >
         </activity>
+        <activity
+            android:name="br.usp.ime.bandex.ComentarioActivity"
+            android:label="@string/title_activity_comentario" >
+        </activity>
+        <activity
+            android:name="br.usp.ime.bandex.ComentarioSendActivity"
+            android:label="@string/title_activity_comentario_send" >
+        </activity>
     </application>
 
 </manifest>
