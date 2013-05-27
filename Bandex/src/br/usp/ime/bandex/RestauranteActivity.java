@@ -1,16 +1,20 @@
 package br.usp.ime.bandex;
 
+import com.google.android.maps.MapActivity;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.widget.TextView;
 
-public class RestauranteActivity extends Activity {
-	
+public class RestauranteActivity extends MapActivity {
 	private Restaurante restaurante = new Restaurante();
 	private int restauranteId = 0;	
 
+	private GoogleMap googleMap;
+	private SupportMapFragment fm;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -22,13 +26,7 @@ public class RestauranteActivity extends Activity {
 		RestauranteDatabaseHandler restauranteDB = new RestauranteDatabaseHandler(getApplicationContext());
 		restaurante = restauranteDB.getRestaurante(this.restauranteId);
 		
-		TextView name = (TextView) findViewById(R.id.name);
-		TextView adrress = (TextView) findViewById(R.id.address);
-		TextView tel = (TextView) findViewById(R.id.tel);
 		
-		name.setText(restaurante.getName());
-		adrress.setText(restaurante.getAddress());
-		tel.setText(restaurante.getTel());
 		
 	}
 
@@ -37,6 +35,12 @@ public class RestauranteActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.restaurante, menu);
 		return true;
+	}
+
+	@Override
+	protected boolean isRouteDisplayed() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

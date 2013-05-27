@@ -106,6 +106,11 @@ public class MainActivity extends ListActivity {
 	        					res.getTel();
 	        					
 	        	showToast(info);
+	        	
+                Intent in = new Intent(getApplicationContext(), RestauranteActivity.class);                
+                //String sid = ((TextView) view.findViewById(R.id.menu_id)).getText().toString();                
+                //in.putExtra("menuId", sid);
+                startActivity(in);	        	
 	            return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
@@ -224,7 +229,8 @@ public class MainActivity extends ListActivity {
         protected String doInBackground(String... args) {
         	RestauranteDatabaseHandler restauranteDB = new RestauranteDatabaseHandler(getApplicationContext());
 
-        	Restaurante res = restauranteDB.getRestaurante(restauranteId+1);  
+        	Restaurante res = restauranteDB.getRestaurante(restauranteId+1);
+        	restaurantes[restauranteId] = res;
         	
         	System.out.println(res.getName());
         	

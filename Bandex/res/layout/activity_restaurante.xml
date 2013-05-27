@@ -1,35 +1,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="#ffffff"
-    android:orientation="vertical" >
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+ 
+    <TextView
+        android:id="@+id/tv_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name" />
 
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="5dip"
-        android:paddingBottom="4dip"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:textColor="#303030" />
-  
-    <TextView
-        android:id="@+id/address"
-        android:layout_below="@id/name"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="4dip"
-        android:textSize="18sp"
-        android:textColor="#303030" />    
-
-    <TextView
-        android:id="@+id/tel"
-        android:layout_below="@id/address"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="1dip"
-        android:textSize="18sp"
-        android:textColor="#303030" />       
-    
+    <fragment
+        android:id="@+id/map"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_location"
+        class="com.google.android.gms.maps.SupportMapFragment" />
+ 
 </RelativeLayout>
