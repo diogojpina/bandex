@@ -105,12 +105,23 @@ public class MainActivity extends ListActivity {
 	        					res.getAddress() + "\n\n" +
 	        					res.getTel();
 	        					
-	        	showToast(info);
+
+
+                Intent in = new Intent(getApplicationContext(), RestauranteActivity.class);
+                
+                               
+                String sid = Integer.toString(restauranteId);  
+                //showToast("Comentários sobre a refeição.");
+                showToast(info);
+                in.putExtra("restauranteId", sid);
+                startActivity(in);	        	
 	        	
+	        	/*
                 Intent in = new Intent(getApplicationContext(), RestauranteActivity.class);                
                 //String sid = ((TextView) view.findViewById(R.id.menu_id)).getText().toString();                
-                //in.putExtra("menuId", sid);
-                startActivity(in);	        	
+                //in.putExtra("restauranteId", Integer.toString(restauranteId));
+                startActivity(in);
+                */
 	            return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
