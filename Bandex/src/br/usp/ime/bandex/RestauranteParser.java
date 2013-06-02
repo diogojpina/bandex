@@ -3,6 +3,7 @@ package br.usp.ime.bandex;
 import java.io.IOException;
 import java.io.StringReader;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -52,6 +53,8 @@ public class RestauranteParser {
 			//pega os menus
 			Menu menu;
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+			SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+			Date d;
 			
 			nodeList = doc.getElementsByTagName("menu");
 			for (int i=0; i < nodeList.getLength(); i++) {
@@ -59,10 +62,14 @@ public class RestauranteParser {
 				
 				menu = new Menu();
 				menu.setId(Integer.parseInt(this.getValue(e, "id")));
-				menu.setDay(sdf.parse(this.getValue(e, "day")));
+				String date = this.getValue(e, "day");
 				menu.setPeriodo(Integer.parseInt(this.getValue(e, "meal-id")));
 				menu.setKcal(Integer.parseInt(this.getValue(e, "kcal")));
 				menu.setOptions(this.getValue(e, "options"));
+				
+				d = sdf.parse(date);
+				date = sdf2.format(d);
+				menu.setDate(date);
 				
 				restaurante.addMenu(menu);
 			}

@@ -3,21 +3,23 @@ package br.usp.ime.bandex;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.AsyncTask;
-import android.os.Bundle;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListAdapter;
@@ -26,8 +28,6 @@ import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemSelectedListener;
 
 public class MainActivity extends ListActivity {
 	
@@ -40,6 +40,7 @@ public class MainActivity extends ListActivity {
 
 	private Spinner spinner;
 	private ImageButton btnRefresh;
+	private Button showMap;
 	
 	private static final int MOBILE = 2;
     private static final int WIFI = 1;
@@ -53,6 +54,7 @@ public class MainActivity extends ListActivity {
 		
 		this.spinner = (Spinner) findViewById(R.id.spinner);
 		this.btnRefresh = (ImageButton) findViewById(R.id.btnRefresh);
+		this.showMap = (Button) findViewById(R.id.showMap);
 		
 		ListView lv = getListView();
         lv.setOnItemClickListener(new OnItemClickListener() {
@@ -61,7 +63,7 @@ public class MainActivity extends ListActivity {
                 Intent in = new Intent(getApplicationContext(), ComentarioActivity.class);
                  
                 String sid = ((TextView) view.findViewById(R.id.menu_id)).getText().toString();
-                showToast("ComentÃ¡rios sobre a refeiÃ§Ã£o.");
+                showToast("Comentários sobre a refeição.");
                 in.putExtra("menuId", sid);
                 startActivity(in);
             }
@@ -87,11 +89,19 @@ public class MainActivity extends ListActivity {
 				refreshRestaurante();
 			}
 		});
+        
+        showMap.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(MainActivity.this, MapsActivity.class);
+				startActivity(i);
+			}
+		});
+        
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
@@ -105,13 +115,8 @@ public class MainActivity extends ListActivity {
 	        					res.getAddress() + "\n\n" +
 	        					res.getTel();
 	        					
-
-
                 Intent in = new Intent(getApplicationContext(), RestauranteActivity.class);
-                
-                               
                 String sid = Integer.toString(restauranteId);  
-                //showToast("ComentÃ¡rios sobre a refeiÃ§Ã£o.");
                 showToast(info);
                 in.putExtra("restauranteId", sid);
                 startActivity(in);	        	
@@ -132,15 +137,15 @@ public class MainActivity extends ListActivity {
 		switch (isNetworkAvailable()) {
 			case MOBILE:
 				AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-				builder.setTitle("VocÃª estÃ¡ usando 3G");
-				builder.setMessage("Deseja atualizar as informaÃ§Ãµes?");
+				builder.setTitle("Você está usando 3G");
+				builder.setMessage("Deseja atualizar as informações?");
 				builder.setPositiveButton("Sim, atualizar com 3G", new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						new UpdateRestauranteItems().execute();
 					}					
 				});
-				builder.setNegativeButton("NÃ£o, utilizar antigas.", new DialogInterface.OnClickListener() {
+				builder.setNegativeButton("Não, utilizar antigas.", new DialogInterface.OnClickListener() {
 					
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
@@ -189,7 +194,7 @@ public class MainActivity extends ListActivity {
 	    protected void onPreExecute() {
 	        super.onPreExecute();
 	        pDialog = new ProgressDialog(MainActivity.this);
-	        pDialog.setMessage("Atualizando as informaÃ§Ãµes...");
+	        pDialog.setMessage("Atualizando as informações...");
 	        pDialog.setIndeterminate(false);
 	        pDialog.setCancelable(true);
 	        pDialog.show();
@@ -230,7 +235,7 @@ public class MainActivity extends ListActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             pDialog = new ProgressDialog(MainActivity.this);
-            pDialog.setMessage("Carregando as informaÃ§Ãµes...");
+            pDialog.setMessage("Carregando as informações...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             pDialog.show();            
@@ -251,8 +256,8 @@ public class MainActivity extends ListActivity {
         		
         		HashMap<String, String> map = new HashMap<String, String>();
         		map.put("id", Integer.toString(menu.getId()));
-        		//map.put("day", menu.getDay().toString());
-        		map.put("day", "12 12 1234");
+        		map.put("day", menu.getDate());
+        		//map.put("day", "12 12 1234");
         		map.put("extra", menu.getPeriodoName() + ": " + menu.getKcal() + "Kcal");
         		map.put("options", menu.getOptions());
         		

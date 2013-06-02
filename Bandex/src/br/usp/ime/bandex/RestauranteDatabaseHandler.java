@@ -7,7 +7,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class RestauranteDatabaseHandler extends SQLiteOpenHelper {
@@ -116,12 +115,12 @@ public class RestauranteDatabaseHandler extends SQLiteOpenHelper {
 		return id;
 	}
 	
-	private long addMenu(br.usp.ime.bandex.Menu menu, int restauranteId) {
+	private long addMenu(Menu menu, int restauranteId) {
 		SQLiteDatabase db;
 		
 		ContentValues values = new ContentValues();
 		values.put(MENU_RESTAURANTE_ID, restauranteId);		
-		values.put(MENU_DAY, menu.getDay().toString());
+		values.put(MENU_DAY, menu.getDate());
 		values.put(MENU_KCAL, menu.getKcal());
 		values.put(MENU_PERIODO, menu.getPeriodo());
 		values.put(MENU_OPTIONS, menu.getOptions());
@@ -194,16 +193,16 @@ public class RestauranteDatabaseHandler extends SQLiteOpenHelper {
 		restaurante.setTel(cursor.getString(3));
 		db.close();
 		
-		List<br.usp.ime.bandex.Menu> menus = this.listMenu(restaurante.getId());
+		List<Menu> menus = this.listMenu(restaurante.getId());
 		for (int i=0; i < menus.size();i++) {
-			br.usp.ime.bandex.Menu menu = menus.get(i);
+			Menu menu = menus.get(i);
 			restaurante.addMenu(menu);
 		}		
 		
 		return restaurante;
 	}
 	
-	public br.usp.ime.bandex.Menu getMenu(int id) {
+	public Menu getMenu(int id) {
 		SQLiteDatabase db = this.getReadableDatabase();		
 		
 		Cursor cursor = db.query(TABLE_MENU, new String[] {KEY_ID, MENU_RESTAURANTE_ID, MENU_DAY, MENU_KCAL, MENU_PERIODO, MENU_OPTIONS},
@@ -214,15 +213,15 @@ public class RestauranteDatabaseHandler extends SQLiteOpenHelper {
 		
 		cursor.moveToFirst();
 		
-		br.usp.ime.bandex.Menu menu = new br.usp.ime.bandex.Menu();
+		Menu menu = new Menu();
 		
 		db.close();
 		
 		return menu;		
 	}
 	
-	public List<br.usp.ime.bandex.Menu> listMenu(int restauranteId) {
-		List<br.usp.ime.bandex.Menu> menus = new ArrayList<br.usp.ime.bandex.Menu>();
+	public List<Menu> listMenu(int restauranteId) {
+		List<Menu> menus = new ArrayList<Menu>();
 		String selectQuery = 	"SELECT * FROM " + TABLE_MENU 
 								+ " WHERE " + MENU_RESTAURANTE_ID + "=" + restauranteId;
 		
@@ -231,8 +230,9 @@ public class RestauranteDatabaseHandler extends SQLiteOpenHelper {
         
         if (cursor.moveToFirst()) {
         	do {
-        		br.usp.ime.bandex.Menu menu = new br.usp.ime.bandex.Menu();
+        		Menu menu = new Menu();
         		menu.setId(cursor.getInt(0));
+        		menu.setDate(cursor.getString(2));
         		menu.setKcal(cursor.getInt(3));
         		menu.setPeriodo(cursor.getInt(4));
         		menu.setOptions(cursor.getString(5));

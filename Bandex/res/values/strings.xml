@@ -9,6 +9,8 @@
     <string name="back">Voltar</string>
     <string name="next">Avançar</string>
     <string name="info">Informaçõs</string>
+    <string name="showMe">Me mostrar/ocultar no mapa</string>
+    <string name="map">Mostrar no Mapa</string>
     <string name="comment">Comentários</string>
     <string name="add_comentario">Adicionar Comentário</string>
 
@@ -22,5 +24,6 @@
     <string name="title_activity_restaurante">Bandex - Restaurante</string>
     <string name="title_activity_comentario">Bandex - Comentários</string>
     <string name="title_activity_comentario_send">ComentarioSendActivity</string>
+    <string name="title_activity_maps">MapsActivity</string>
 
 </resources>

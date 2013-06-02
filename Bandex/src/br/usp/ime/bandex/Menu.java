@@ -1,13 +1,12 @@
 package br.usp.ime.bandex;
 
-import java.util.Date;
 
 public class Menu {
 	private String created;
 	private String updated;
 	private int id;
 	private int kcal;
-	private Date day;
+	private String date;
 	private int periodo;
 	private String options;
 	
@@ -43,12 +42,12 @@ public class Menu {
 		this.kcal = kcal;
 	}
 
-	public Date getDay() {
-		return day;
+	public String getDate() {
+		return date;
 	}
 
-	public void setDay(Date day) {
-		this.day = day;
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 	public int getPeriodo() {
