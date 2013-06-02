@@ -37,15 +37,13 @@ public class ComentarioActivity extends ListActivity {
 		setContentView(R.layout.activity_comentario);
 		
 		Intent in = getIntent();
-		//this.menuId = Integer.parseInt(in.getStringExtra("menuId"));
-		this.menuId = 1;
+		this.menuId = Integer.parseInt(in.getStringExtra("menuId"));
 		
-		new UpdateComentarios().execute();
+		refreshComentarios();
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.comentario, menu);
 		return true;
 	}
@@ -55,9 +53,8 @@ public class ComentarioActivity extends ListActivity {
 	    switch (item.getItemId()) {
 	        case R.id.btnComentario:
 	        	Intent in = new Intent(getApplicationContext(), ComentarioSendActivity.class);
-	        	showToast("Envie seu coment√°rio.");
                 in.putExtra("menuId", Integer.toString(this.menuId));
-                startActivity(in);
+                startActivityForResult(in, 1);
 	            return true;
 	        default:
 	            return super.onOptionsItemSelected(item);
@@ -65,19 +62,19 @@ public class ComentarioActivity extends ListActivity {
 	}	
 	
 	
-	private void refreshRestaurante() {
+	private void refreshComentarios() {
 		switch (isNetworkAvailable()) {
 			case MOBILE:
 				AlertDialog.Builder builder = new AlertDialog.Builder(ComentarioActivity.this);
-				builder.setTitle("Voc√™ est√° usando 3G");
-				builder.setMessage("Deseja atualizar as informa√ß√µes?");
+				builder.setTitle("VocÍ est· usando 3G");
+				builder.setMessage("Deseja atualizar os coment·rios?");
 				builder.setPositiveButton("Sim, atualizar com 3G", new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						new UpdateComentarios().execute();
 					}					
 				});
-				builder.setNegativeButton("N√£o, utilizar antigas.", new DialogInterface.OnClickListener() {
+				builder.setNegativeButton("N„o.", new DialogInterface.OnClickListener() {
 					
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
@@ -94,7 +91,7 @@ public class ComentarioActivity extends ListActivity {
 				new UpdateComentarios().execute();
 				break;
 			case 0:
-				showToast("Sem conex√£o com a internet. Carregando as informa√ß√µes salvas.");
+				showToast("Sem conex„o com a internet. Carregando as informaÁıes salvas.");
 				new LoadComentarioFromDB().execute();
 				break;				
 		}
@@ -126,7 +123,7 @@ public class ComentarioActivity extends ListActivity {
 	    protected void onPreExecute() {
 	        super.onPreExecute();
 	        pDialog = new ProgressDialog(ComentarioActivity.this);
-	        pDialog.setMessage("Atualizando as informa√ß√µes...");
+	        pDialog.setMessage("Atualizando as informaÁıes...");
 	        pDialog.setIndeterminate(false);
 	        pDialog.setCancelable(true);
 	        pDialog.show();
@@ -160,7 +157,7 @@ public class ComentarioActivity extends ListActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             pDialog = new ProgressDialog(ComentarioActivity.this);
-            pDialog.setMessage("Carregando os coment√°rios...");
+            pDialog.setMessage("Carregando os coment·rios...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             pDialog.show();            
@@ -202,6 +199,14 @@ public class ComentarioActivity extends ListActivity {
         	setListAdapter(adapter);
         	
         }
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if(resultCode == RESULT_OK) {
+			refreshComentarios();
+		}
+		super.onActivityResult(requestCode, resultCode, data);
 	}	
 	
 

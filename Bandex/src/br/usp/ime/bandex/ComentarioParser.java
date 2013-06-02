@@ -2,10 +2,8 @@ package br.usp.ime.bandex;
 
 import java.io.IOException;
 import java.io.StringReader;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -36,8 +34,6 @@ public class ComentarioParser {
 			Document doc = this.getDomElement(cardapio_xml);
 			NodeList nodeList;
 			Element e;
-			
-			
 			
 			nodeList = doc.getElementsByTagName("comment");
 			for (int i=0; i < nodeList.getLength(); i++) {

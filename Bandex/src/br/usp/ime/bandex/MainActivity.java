@@ -257,7 +257,6 @@ public class MainActivity extends ListActivity {
         		HashMap<String, String> map = new HashMap<String, String>();
         		map.put("id", Integer.toString(menu.getId()));
         		map.put("day", menu.getDate());
-        		//map.put("day", "12 12 1234");
         		map.put("extra", menu.getPeriodoName() + ": " + menu.getKcal() + "Kcal");
         		map.put("options", menu.getOptions());
         		
