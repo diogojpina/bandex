@@ -22,10 +22,10 @@ public class BandejoesUSP {
 		int icon = R.drawable.ic_imeusp; // icon bandex
 		if(bandejao_usp == null) {
 			bandejao_usp = new BandejaoInfo[4];
-			bandejao_usp[0] = new BandejaoInfo(-23.565128, -46.712408, "bandex 1", "horarios: ", icon);
-			bandejao_usp[1] = new BandejaoInfo(-23.551064, -46.732149, "bandex 2", "horarios: ", icon);
-			bandejao_usp[2] = new BandejaoInfo(-23.569258, -46.741118, "bandex 3", "horarios: ", icon);
-			bandejao_usp[3] = new BandejaoInfo(-23.569258, -46.741118, "bandex 4", "horarios: ", icon);
+			bandejao_usp[0] = new BandejaoInfo(-23.559739, -46.721552, "Restaurante Central", "Praça do Relógio Solar, travessa 8, nº 300, Cidade Universitária", icon);
+			bandejao_usp[1] = new BandejaoInfo(-23.560565, -46.735457, "Restaurante da Física", "Rua do Matão, Travessa R - Instituto de Física - Cidade Universitária", icon);
+			bandejao_usp[2] = new BandejaoInfo(-23.563731, -46.725713, "Restaurante da Química", "Av. Lineu Prestes, 748 - Instituto de Químicas - Cidade Universitária", icon);
+			bandejao_usp[3] = new BandejaoInfo(-23.558935, -46.740676, "Restaurante da PUSP-C", "Av. Prof. Almeida Prado, 1280 - Cidade Universitária", icon);
 			
 			markerList = new ArrayList<Marker>();
 		}
